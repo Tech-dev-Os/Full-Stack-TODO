@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Jersey+20&display=swap');
+[ngbAccordion]{
+    margin: 2rem 2rem;
+    min-width: 400px;
+}
+
+[ngbAccordionButton] {
+    font-weight: bolder;
+    font-size: 2rem;
+    font-family: 'Jersey 20', sans-serif;
+
+
+}
+.addBtn{
+    margin-left:50;
+    
+}

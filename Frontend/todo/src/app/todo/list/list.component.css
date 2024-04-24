@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&display=swap');
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+.header{
+  height: 3rem;   
+}
+.header p {
+  font-family: 'Jersey 10', sans-serif;
+}
+.card {
+  margin-top: 1rem;
+  opacity: 0.8;
+  color: black;
+}
+.card-title{
+    font-family:poppins, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-transform: capitalize;
+
+}
+.card-text{
+    font-family:sans-serif;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+.complete {
+  opacity: 0.8;
+  color: black;
+}
+.card::before,
+.card::after {
+  content: "";
+  position: absolute;
+  inset: -0.2rem;
+  z-index: -1;
+  background: linear-gradient(var(--angle), #01eaa4, #ffffff, #019b4cdc);
+  animation: rotate 10s linear infinite;
+  border-radius: 3%;
+}
+.card::after {
+  filter: blur(10px);
+}
+@keyframes rotate {
+  0% {
+    --angle: 0deg;
+  }
+  100% {
+    --angle: 360deg;
+  }
+}
+
+.complete::before,
+.complete::after {
+  content: "";
+  position: absolute;
+  inset: -0.2rem;
+  z-index: -1;
+  background: linear-gradient(var(--angle), #f72100, #ffffff, #b70900);
+  animation: rotate 10s linear infinite;
+}
+.complete::after {
+  filter: blur(10px);
+}
+@keyframes rotate {
+  0% {
+    --angle: 0deg;
+  }
+  100% {
+    --angle: 360deg;
+  }
+}
+@media only screen and (max-width: 750px){
+
+  .Smform-select{
+    flex-grow: 2;
+  }
+    select{   
+        width: 100px;
+    }
+    .card-title{
+      flex-direction: column;
+    }
+}

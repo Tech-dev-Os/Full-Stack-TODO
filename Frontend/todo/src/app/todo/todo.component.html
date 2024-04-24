@@ -1,0 +1,72 @@
+<div class="addbtn d-flex justify-content-center ">
+    <div ngbAccordion [animation]="true" class="w-25  " >
+        <div ngbAccordionItem [collapsed]="open_form" >
+            <h2 ngbAccordionHeader>
+                <button ngbAccordionButton class="shadow-none" (click)="resetStatusForm()">
+                    New 
+                </button>
+
+            </h2>
+            <div ngbAccordionCollapse>
+                <div ngbAccordionBody>
+                    <ng-template>
+                        <form [formGroup]="formData" (ngSubmit)="submitData(formData)">
+                        <div class="form-floating my-4">
+                            <input
+                                type="text"
+                                class="form-control shadow-none "
+                                id="floatingName"
+                                placeholder="studentName"
+                                formControlName="title"
+                                #TitleField
+                            />
+                            <label
+                                for="floatingName"
+                                class="text-success fs-6"
+                            >
+                                Title</label
+                            >
+                            <p class="text-danger fs-6 fw-light" 
+                            *ngIf="formData.get('title')?.invalid && formData.get('title')?.dirty"
+                            >Title is Required</p>
+                        </div>
+                        <div class="form-floating">
+                            <input
+                                type="text"
+                                class="form-control shadow-none"
+                                id="floatingName"
+                                placeholder="studentName"
+                                formControlName="descr"
+                            />
+                            <label
+                                for="floatingName"
+                                class="text-success fs-6"
+                            >
+                                Descr</label
+                            >
+                            <p class="text-danger fs-6 fw-light" 
+                            *ngIf="formData.get('descr')?.invalid && formData.get('descr')?.dirty"
+                            >description  is Required</p>
+                        </div>
+                        <div class="form-check my-4">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" formControlName="complete" [checked]="true">
+                            <label class="form-check-label" for="flexCheckChecked">
+                            Not Completed
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-success w-75" [disabled]="formData.invalid">Save</button>
+                        <button type="button" class="btn btn-primary" (click)="resetForm()">Clear</button>
+
+                    </form>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-list [todo]="todo" 
+(open_form)="handleEmitFormOpen($event)" 
+(del_id)="handleEmitIdForDelete($event)" 
+(editForm)="handleEditformData($event)" 
+>
+</app-list>

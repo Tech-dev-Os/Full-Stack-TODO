@@ -1,0 +1,48 @@
+
+
+<div class="header d-flex justify-content-center align-items-center rounded bg-light text-dark w-75 m-auto">
+  <select class="form-select w-25 Smform-select" name="filter" aria-label="Default select example" (change)="filter()" [(ngModel)]="filter_value">
+    <option [value]="e.id" *ngFor="let e of filter_option">
+      {{e.name}}
+    </option>
+  </select>
+  <p class="fs-3 m-5 ">Todo List</p>
+</div>
+
+
+
+<div class="text-center my-3" *ngIf="loaderservice.is_loading | async">
+  <div class="spinner-border" role="status">
+    <span class="sr-only"></span>
+  </div>
+</div>
+<div class="alert alert-danger m-2" role="alert" *ngIf="temp_todo.length == 0">
+    <p class="fs-5 fw-bold my-auto text-center">No Todo Found</p>
+</div>
+<div class="row w-75 m-auto">
+    <div class="cards col-sm-6" *ngFor="let elm of temp_todo">
+      <div class="card" [class.complete]="elm.complete">
+        <div class="card-body">
+          <h5
+            class="card-title d-flex justify-content-between align-items-center"
+          >
+            <span>{{ elm.title }}</span
+            ><span class="fs-6 fw-italic my-2">{{ elm.modify }}</span>
+          </h5>
+          <hr />
+          <p class="card-text">{{ elm.descr }}</p>
+          <div class="d-flex justify-content-between mx-4">
+            <button
+              class="btn btn-primary"
+              (click)="emitOpenform(!false); setFormtoEditContent(elm)"
+            >
+              Edit
+            </button>
+            <button class="btn btn-danger" (click)="emitDelTodoId(elm.id)">
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
